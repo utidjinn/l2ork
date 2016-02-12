@@ -1,0 +1,68 @@
+#N canvas 47 14 1126 690 10;
+#X obj -30 -30 preset_hub k12 1 %hidden% %node% 2 2 1 %node% 2 2 14
+%node% 2 2 28 %node% 2 3 4 %node% 2 3 1 %node% 2 4 4 %node% 2 3 5 %node%
+2 3 1 %node% 2 10 5 %node% 2 25 8 %node% 2 25 36 %node% 2 25 37 %node%
+2 25 38;
+#X obj 424 26 @pd_extra/K12/wii_connect 0;
+#X obj 240 617 @pd_extra/K12/output 0;
+#X obj 239 8 @pd_extra/K12/signal_microphone 0;
+#X obj 426 154 @pd_extra/K12/wii_nunchuk_stick 0;
+#X floatatom 413 247 5 0 0 0 - - -, f 5;
+#X floatatom 825 262 5 0 0 0 - - -, f 5;
+#X obj 409 304 select 1 0 -1;
+#X obj 501 368 select 1 0 -1;
+#X obj 922 391 select 1 0 -1;
+#X obj 279 506 @pd_extra/K12/fx_pitchshift 0;
+#X obj 458 452 random 24;
+#X msg 529 453 2;
+#X msg 560 453 4;
+#X msg 599 453 5;
+#X msg 645 452 7;
+#X msg 686 454 9;
+#X msg 730 455 11;
+#X msg 769 455 12;
+#X obj 740 367 select 1 0 -1;
+#X msg 418 454 0;
+#X obj 613 340 expr if($f2 > 0.5 \, 1 \, if($f2 > -0.5 \, 0 \, -1))
+;
+#X obj 383 273 expr if($f1 >= 0.5 \, 1 \, if($f1 > -0.5 \, 0 \, -1))
+;
+#X obj 886 340 expr if($f2 > 0.5 \, 1 \, if($f2 > -0.5 \, 0 \, -1))
+;
+#X obj 335 338 expr if($f2 > 0.5 \, 1 \, if($f2 > -0.5 \, 0 \, -1))
+;
+#X connect 1 0 4 0;
+#X connect 3 0 2 0;
+#X connect 3 0 10 0;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;
+#X connect 5 0 22 0;
+#X connect 6 0 21 1;
+#X connect 6 0 23 1;
+#X connect 6 0 24 1;
+#X connect 7 0 24 0;
+#X connect 7 1 21 0;
+#X connect 7 2 23 0;
+#X connect 8 0 12 0;
+#X connect 8 1 13 0;
+#X connect 8 2 14 0;
+#X connect 9 0 18 0;
+#X connect 9 1 17 0;
+#X connect 9 2 16 0;
+#X connect 10 0 2 0;
+#X connect 11 0 10 1;
+#X connect 12 0 10 1;
+#X connect 13 0 10 1;
+#X connect 14 0 10 1;
+#X connect 15 0 10 1;
+#X connect 16 0 10 1;
+#X connect 17 0 10 1;
+#X connect 18 0 10 1;
+#X connect 19 0 11 0;
+#X connect 19 1 20 0;
+#X connect 19 2 15 0;
+#X connect 20 0 10 1;
+#X connect 21 0 19 0;
+#X connect 22 0 7 0;
+#X connect 23 0 9 0;
+#X connect 24 0 8 0;
