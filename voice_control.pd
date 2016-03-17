@@ -1,4 +1,4 @@
-#N canvas 682 14 656 690 10;
+#N canvas 632 14 656 690 10;
 #X declare -lib maxlib;
 #N canvas 781 14 511 467 wiimote 0;
 #X msg 35 301 disconnect;
@@ -519,7 +519,7 @@
 #X connect 35 0 33 0;
 #X coords 0 -1 1 1 84 60 2 142 12;
 #X restore 188 11 pd wiimote;
-#X obj 9 537 l2ork_output~;
+#X obj 110 172 l2ork_output~;
 #N canvas 530 125 479 260 pre-dac 0;
 #X obj 92 115 r filter_freq;
 #X obj -13 -21 inlet~;
@@ -557,21 +557,21 @@ cpu;
 #X connect 16 0 11 0;
 #X connect 16 0 6 0;
 #X connect 17 0 5 0;
-#X restore 9 514 pd pre-dac;
-#X obj 202 501 nbx 5 20 -1e+37 1e+37 0 1 filter_freq empty empty -90
+#X restore 110 149 pd pre-dac;
+#X obj 303 136 nbx 5 20 -1e+37 1e+37 0 1 filter_freq empty empty -90
 24 0 12 -191407 -1 -1 300 256 0;
-#X text 198 520 filter frequency;
-#X obj 202 582 nbx 5 20 -1e+37 1e+37 0 1 bandpass_q empty empty -90
+#X text 299 155 filter frequency;
+#X obj 303 217 nbx 5 20 -1e+37 1e+37 0 1 bandpass_q empty empty -90
 24 0 12 -191407 -1 -1 0.25 256 0;
-#X obj 202 541 nbx 5 20 -1e+37 1e+37 0 1 bandpass_freq empty empty
+#X obj 303 176 nbx 5 20 -1e+37 1e+37 0 1 bandpass_freq empty empty
 -90 24 0 12 -191407 -1 -1 1600 256 0;
-#X text 199 559 bandpass frequency;
-#X text 200 602 bandpass q;
-#X obj 85 494 loadbang;
-#X obj 202 623 nbx 5 20 -1e+37 1e+37 0 1 noisegate empty empty -90
+#X text 300 194 bandpass frequency;
+#X text 301 237 bandpass q;
+#X obj 186 129 loadbang;
+#X obj 303 258 nbx 5 20 -1e+37 1e+37 0 1 noisegate empty empty -90
 24 0 12 -191407 -1 -1 5 256 0;
-#X msg 114 514 1;
-#X obj 116 540 tgl 15 0 empty l2ork-client-connection-gui connection
+#X msg 215 149 1;
+#X obj 217 175 tgl 15 0 empty l2ork-client-connection-gui connection
 17 7 0 8 -262144 -1 -1 0 1;
 #X obj 9 -10 adc~ 1;
 #X obj 9 11 *~ 5;
@@ -861,8 +861,8 @@ floor.;
 #X obj 43 22 r noisegate;
 #X obj 9 85 @pd_extra/K12/fx_multitap 0;
 #X obj 10 187 @pd_extra/K12/fx_reverb 0;
-#X obj 11 291 voice;
-#X msg 85 514 15;
+#X obj 10 282 voice;
+#X msg 186 149 15;
 #X connect 2 0 1 0;
 #X connect 2 1 1 1;
 #X connect 9 0 21 0;
