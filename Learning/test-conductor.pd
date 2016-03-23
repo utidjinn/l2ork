@@ -1,0 +1,10 @@
+#N canvas 51 20 450 300 10;
+#X obj 91 48 l2ork_conductor;
+#X floatatom 55 104 5 0 0 0 - - -, f 5;
+#X obj 59 166 s l2ork-conductor-broadcast-custom;
+#X obj 53 80 metro 2000;
+#X obj 55 60 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X connect 1 0 2 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;

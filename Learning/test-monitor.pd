@@ -1,0 +1,5 @@
+#N canvas 562 18 450 300 10;
+#X obj -408 -470 l2ork_monitor;
+#X floatatom -289 -380 5 0 0 0 - - -, f 5;
+#X obj -288 -417 r l2ork-conductor-custom-data;
+#X connect 2 0 1 0;

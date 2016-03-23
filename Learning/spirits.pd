@@ -1,0 +1,314 @@
+#N canvas 57 24 1126 718 10;
+#X declare -lib maxlib;
+#X obj 750 364 l2ork_output~;
+#N canvas 530 125 479 260 pre-dac 0;
+#X obj 92 115 r filter_freq;
+#X obj -13 -21 inlet~;
+#X obj -13 201 outlet~;
+#X obj 42 201 outlet~;
+#X obj 124 21 loadbang;
+#X obj -12 113 freeverb~;
+#X obj -12 93 +~ 1e-07;
+#X text 47 91 <-- fix freeverb not liking zeros and thus hogging the
+cpu;
+#X obj -13 164 svf~ 150;
+#X obj 92 136 sig~;
+#X obj 31 136 sig~ 0.01;
+#X obj -1 52 svf~ 150;
+#X obj 45 25 sig~ 0.01;
+#X obj 39 2 sig~;
+#X obj 39 -19 r bandpass_freq;
+#X obj 137 -19 r bandpass_q;
+#X obj -13 13 *~ -1;
+#X msg 124 42 roomsize 0.5 \, wet 0.2 \, dry 0.9 \, width 0 \, damping
+0.3;
+#X connect 0 0 9 0;
+#X connect 1 0 16 0;
+#X connect 4 0 17 0;
+#X connect 5 0 8 0;
+#X connect 6 0 5 0;
+#X connect 8 0 3 0;
+#X connect 8 1 2 0;
+#X connect 9 0 8 1;
+#X connect 10 0 8 2;
+#X connect 12 0 11 2;
+#X connect 13 0 11 1;
+#X connect 14 0 13 0;
+#X connect 15 0 12 0;
+#X connect 16 0 11 0;
+#X connect 16 0 6 0;
+#X connect 17 0 5 0;
+#X restore 750 328 pd pre-dac;
+#X obj 943 318 nbx 5 20 -1e+37 1e+37 0 1 filter_freq empty empty -90
+24 0 12 -191407 -1 -1 300 256 0;
+#X text 939 337 filter frequency;
+#X obj 943 399 nbx 5 20 -1e+37 1e+37 0 1 bandpass_q empty empty -90
+24 0 12 -191407 -1 -1 0.25 256 0;
+#X obj 943 358 nbx 5 20 -1e+37 1e+37 0 1 bandpass_freq empty empty
+-90 24 0 12 -191407 -1 -1 1600 256 0;
+#X text 940 376 bandpass frequency;
+#X text 941 419 bandpass q;
+#X obj 826 321 loadbang;
+#X msg 826 341 100;
+#X obj 943 440 nbx 5 20 -1e+37 1e+37 0 1 noisegate empty empty -90
+24 0 12 -191407 -1 -1 5 256 0;
+#X text 941 460 noisegate;
+#X msg 855 341 1;
+#X obj 857 367 tgl 15 0 empty l2ork-client-connection-gui connection
+17 7 0 8 -262144 -1 -1 0 1;
+#X obj 756 13 adc~ 1;
+#X obj 756 34 *~ 5;
+#N canvas 3 75 450 218 noisegate 0;
+#X floatatom 1017 296 0 0 0 0 - - -;
+#N canvas 99 50 648 509 fft-analysis 0;
+#X obj 35 589 *~;
+#X obj 143 305 *~;
+#X obj 158 150 *~;
+#X obj 35 72 *~;
+#X obj 76 527 *~;
+#X obj 35 44 inlet~;
+#X obj 35 528 *~;
+#X obj 34 101 rfft~;
+#X obj 35 558 rifft~;
+#X obj 36 616 outlet~;
+#X obj 119 149 *~;
+#X obj 119 176 +~;
+#X obj 165 278 r mask-level;
+#X obj 100 422 /~;
+#X obj 355 23 block~ 1024 4;
+#X text 176 446 is signal power and "m" is mask.;
+#X obj 131 332 -~;
+#X obj 131 355 max~ 0;
+#X obj 99 448 q8_sqrt~;
+#X text 175 464 (zero if s < m).;
+#X obj 144 256 tabreceive~ \$0-mask;
+#X obj 76 72 tabreceive~ \$0-hann;
+#X obj 69 590 tabreceive~ \$0-hann;
+#N canvas 91 250 910 495 calculate-mask 0;
+#X obj 125 379 inlet~;
+#X msg 371 283 0;
+#X msg 371 166 0;
+#X obj 240 196 float;
+#X obj 294 200 + 1;
+#X obj 240 144 bang~;
+#X obj 240 169 spigot;
+#X floatatom 411 218 0 0 0 0 - - -;
+#X obj 315 408 -~;
+#X obj 371 258 sel 0;
+#X obj 327 443 *~;
+#X obj 293 443 +~;
+#X floatatom 351 313 0 0 0 0 - - -;
+#X obj 240 219 t f f;
+#X obj 370 113 r make-mask;
+#X obj 371 141 t b f;
+#X obj 411 165 /;
+#X text 483 212 number of;
+#X text 491 227 frames;
+#X floatatom 481 166 0 0 0 0 - - -;
+#X obj 480 113 r window-msec;
+#X obj 481 136 / 4;
+#X text 521 133 hop size (analysis;
+#X text 546 149 period) in msec;
+#X obj 359 408 tabreceive~ \$0-mask;
+#X obj 292 468 tabsend~ \$0-mask;
+#X obj 371 218 <;
+#X obj 235 258 expr 1/($f1+1);
+#X text 134 17 calculate a mask using N msec of background noise;
+#X text 43 354 current power (for each channel);
+#X text 367 430 average the current power into the last mask to get
+the new mask. The new value is weighted 1/n on the nth iteration.;
+#X text 390 312 weight to average in new power to mask;
+#X text 11 203 loop counting to desired;
+#X text 78 219 number of frames;
+#X text 72 39 This loops for "make-mask" milliseconds \, averaging
+power in each channel over that amount of time. This is done by a moving
+average whose weight is adjusted to average each new value equally
+with each of the accumulating ones.;
+#X connect 0 0 8 0;
+#X connect 1 0 12 0;
+#X connect 2 0 3 1;
+#X connect 2 0 26 0;
+#X connect 3 0 13 0;
+#X connect 3 0 4 0;
+#X connect 4 0 3 1;
+#X connect 5 0 6 0;
+#X connect 6 0 3 0;
+#X connect 7 0 26 1;
+#X connect 8 0 10 0;
+#X connect 9 0 1 0;
+#X connect 10 0 11 1;
+#X connect 11 0 25 0;
+#X connect 12 0 10 1;
+#X connect 13 0 26 0;
+#X connect 13 1 27 0;
+#X connect 14 0 15 0;
+#X connect 15 0 2 0;
+#X connect 15 1 16 0;
+#X connect 16 0 7 0;
+#X connect 20 0 21 0;
+#X connect 21 0 16 1;
+#X connect 21 0 19 0;
+#X connect 24 0 8 1;
+#X connect 24 0 11 0;
+#X connect 26 0 6 1;
+#X connect 26 0 9 0;
+#X connect 27 0 12 0;
+#X restore 132 203 pd calculate-mask;
+#X text 91 98 real Fourier transform;
+#X obj 357 57 loadbang;
+#X msg 357 80 \; pd dsp 1 \; window-size 1024;
+#X text 193 355 ... but not less than zero;
+#X text 101 561 real inverse Fourier transform;
+#X text 196 498 normalize by 2/(3N) where N is window size;
+#X text 168 332 current power ("s") minus level-adjusted mask ("m")
+;
+#X text 156 175 compute power (call it "s") in each channel;
+#X obj 123 395 +~ 1e-20;
+#X text 203 395 protect against division by zero;
+#X text 179 426 compute sqrt((s-m)/s) where "s";
+#X text 296 204 <- subwindow calculates noise mask;
+#X obj 98 499 /~ 1536;
+#X connect 0 0 9 0;
+#X connect 1 0 16 1;
+#X connect 2 0 11 1;
+#X connect 3 0 7 0;
+#X connect 4 0 8 1;
+#X connect 5 0 3 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 7 0 10 0;
+#X connect 7 0 10 1;
+#X connect 7 1 4 0;
+#X connect 7 1 2 0;
+#X connect 7 1 2 1;
+#X connect 8 0 0 0;
+#X connect 10 0 11 0;
+#X connect 11 0 16 0;
+#X connect 11 0 23 0;
+#X connect 11 0 32 0;
+#X connect 12 0 1 1;
+#X connect 13 0 18 0;
+#X connect 16 0 17 0;
+#X connect 17 0 13 0;
+#X connect 18 0 36 0;
+#X connect 20 0 1 0;
+#X connect 21 0 3 1;
+#X connect 22 0 0 1;
+#X connect 25 0 26 0;
+#X connect 32 0 13 1;
+#X connect 36 0 6 1;
+#X connect 36 0 4 1;
+#X restore 828 258 pd fft-analysis;
+#N canvas 2 105 565 454 hann-window 0;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array \$0-hann 1024 float 0 black black;
+#X coords 0 1 1023 0 300 100 1;
+#X restore 82 311 graph;
+#X obj 378 165 osc~;
+#X obj 378 190 *~ -0.5;
+#X obj 378 214 +~ 0.5;
+#X obj 331 247 tabwrite~ \$0-hann;
+#X obj 37 88 r window-size;
+#X obj 38 173 /;
+#X obj 127 142 samplerate~;
+#X obj 38 251 s window-sec;
+#X obj 177 204 swap;
+#X obj 177 228 /;
+#X obj 177 252 s window-hz;
+#X obj 49 201 * 1000;
+#X obj 49 228 s window-msec;
+#X obj 38 115 t f b f;
+#X msg 173 92 resize \$1;
+#X obj 173 116 s \$0-hann;
+#X obj 330 105 r window-hz;
+#X msg 382 130 0;
+#X obj 330 131 t f b;
+#X text 15 8 calculate Hann window table (variable window size) and
+constants window-hz (fundamental frequency of analysis) \, window-sec
+and window-msec (analysis window size in seconds and msec).;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 14 0;
+#X connect 6 0 8 0;
+#X connect 6 0 12 0;
+#X connect 7 0 6 1;
+#X connect 7 0 9 1;
+#X connect 9 0 10 0;
+#X connect 9 1 10 1;
+#X connect 10 0 11 0;
+#X connect 12 0 13 0;
+#X connect 14 0 6 0;
+#X connect 14 0 9 0;
+#X connect 14 1 7 0;
+#X connect 14 2 15 0;
+#X connect 15 0 16 0;
+#X connect 17 0 19 0;
+#X connect 18 0 1 1;
+#X connect 19 0 1 0;
+#X connect 19 1 4 0;
+#X connect 19 1 18 0;
+#X restore 987 381 pd hann-window;
+#X obj 1017 321 s mask-level;
+#X text 1018 245 on;
+#X text 1063 246 off;
+#X text 1018 229 masking;
+#X msg 1062 269 0;
+#X text 1094 278 calculate noise mask;
+#X msg 1113 305 \; make-mask 2000;
+#X msg 1017 268 15;
+#N canvas 3 75 592 442 mask-table 0;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array \$0-mask 512 float 1 black black;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0;
+#X coords 0 500 511 0 400 300 1;
+#X restore 110 76 graph;
+#X text 25 14 This table (1236-mask) is the average power measured
+in each channel of the spectrum \, presumed to represent the noise
+floor.;
+#X restore 987 403 pd mask-table;
+#X obj 828 236 inlet~;
+#X obj 827 280 outlet~;
+#X obj 1130 243 inlet;
+#X obj 975 246 inlet;
+#X connect 0 0 3 0;
+#X connect 1 0 13 0;
+#X connect 7 0 0 0;
+#X connect 10 0 0 0;
+#X connect 12 0 1 0;
+#X connect 14 0 9 0;
+#X connect 15 0 0 0;
+#X restore 756 67 pd noisegate;
+#X obj 866 33 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 790 45 r noisegate;
+#X obj 761 99 @pd_extra/K12/fx_multitap 0;
+#X obj 600 215 @pd_extra/K12/fx_reverb 0;
+#X connect 1 0 0 0;
+#X connect 1 1 0 1;
+#X connect 8 0 9 0;
+#X connect 8 0 12 0;
+#X connect 9 0 0 6;
+#X connect 12 0 0 7;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 19 0;
+#X connect 17 0 16 2;
+#X connect 18 0 16 1;
+#X connect 19 0 20 0;
+#X connect 20 0 1 0;
