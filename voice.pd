@@ -1,6 +1,6 @@
-#N canvas 57 24 1311 718 10;
+#N canvas 57 78 1311 690 10;
 #X obj 256 -54 vsl 53 241 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 11020 1;
 #X obj 373 329 outlet~;
 #X obj 251 -111 inlet~;
 #X text 104 94 Current Track;
@@ -152,7 +152,7 @@
 #X restore 268 224 pd global_mute;
 #X obj 67 -141 loadbang;
 #X obj -24 -53 vsl 58 238 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 10456 1;
 #N canvas 434 184 450 300 wii-pitch 0;
 #X obj 79 159 outlet;
 #X obj 79 38 r wii-pitch-set;
@@ -194,9 +194,10 @@
 #X text 377 308 Total outgoing signal;
 #X obj -24 245 s track-1-volume;
 #X obj 289 202 s track-2-volume;
+#X obj 78 338 s current-track;
+#X text 176 338 sent to pd gui in main patch;
 #X connect 0 0 15 1;
 #X connect 0 0 26 0;
-#X connect 2 0 4 2;
 #X connect 2 0 4 3;
 #X connect 2 0 16 0;
 #X connect 4 0 14 0;
@@ -213,6 +214,7 @@
 #X connect 16 0 1 0;
 #X connect 18 0 4 1;
 #X connect 18 0 9 1;
+#X connect 18 0 27 0;
 #X connect 20 0 21 0;
 #X connect 21 0 9 0;
 #X connect 22 0 18 0;

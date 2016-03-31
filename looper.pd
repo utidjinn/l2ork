@@ -1,8 +1,8 @@
 #N canvas 57 24 1311 718 10;
-#X obj 124 27 inlet~;
-#X obj 169 27 inlet~;
-#X obj 122 76 tabwrite~ loopArray0;
-#X obj 122 96 tabwrite~ loopArray1;
+#X obj 45 84 inlet~;
+#X obj 209 58 inlet~;
+#X obj 35 105 tabwrite~ loopArray0;
+#X obj 205 105 tabwrite~ loopArray1;
 #X obj 36 -65 inlet;
 #X obj 36 55 route 0 1 2 3;
 #X obj 640 346 phasor~;
@@ -27,9 +27,9 @@
 #X obj 138 127 loadbang;
 #X msg 200 146 192000;
 #X obj 279 232 hsl 195 12 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1056 1;
+-1 -1 13775 1;
 #X obj 279 292 hsl 195 12 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1063 1;
+-1 -1 8930 1;
 #X obj 795 403 send~ position2;
 #X obj 43 320 r~ position2;
 #X obj 120 337 snapshot~;
@@ -186,6 +186,17 @@
 #X obj 513 -37 expr if($f1 == 4 \, 4 \, 0);
 #X obj 512 -17 change;
 #X obj 943 1 change;
+#X obj 165 503 s position-track-2;
+#X obj 19 503 s position-track-1;
+#X text 285 503 Sent to pd gui object in main patch;
+#X obj 1040 189 expr $f1/2;
+#X obj 1039 218 average 20;
+#X obj 1040 242 change;
+#X obj 1041 268 s track-2-acceleration;
+#X obj 891 229 average 20;
+#X obj 889 251 change;
+#X obj 891 210 expr ($f1/-4);
+#X obj 889 271 s track-1-acceleration;
 #X connect 0 0 2 0;
 #X connect 1 0 3 0;
 #X connect 4 0 39 0;
@@ -208,6 +219,7 @@
 #X connect 20 0 19 0;
 #X connect 20 0 30 0;
 #X connect 21 0 26 0;
+#X connect 21 0 75 0;
 #X connect 22 0 21 1;
 #X connect 22 0 31 1;
 #X connect 23 0 19 0;
@@ -217,18 +229,21 @@
 #X connect 29 0 30 0;
 #X connect 30 0 31 0;
 #X connect 31 0 27 0;
+#X connect 31 0 74 0;
 #X connect 32 0 33 0;
 #X connect 33 0 28 0;
 #X connect 33 0 12 0;
 #X connect 34 0 32 0;
 #X connect 34 0 46 0;
 #X connect 35 0 68 0;
+#X connect 35 0 77 0;
 #X connect 36 0 38 0;
 #X connect 37 0 47 1;
 #X connect 38 0 60 0;
 #X connect 39 0 5 0;
 #X connect 40 0 39 1;
 #X connect 41 0 50 0;
+#X connect 41 0 83 0;
 #X connect 42 0 43 0;
 #X connect 43 0 57 0;
 #X connect 44 0 6 0;
@@ -255,8 +270,8 @@
 #X connect 65 0 61 0;
 #X connect 66 0 62 0;
 #X connect 66 1 62 0;
-#X connect 67 0 68 1;
 #X connect 67 0 73 0;
+#X connect 67 0 68 1;
 #X connect 68 0 36 0;
 #X connect 69 0 63 0;
 #X connect 70 0 53 0;
@@ -264,4 +279,10 @@
 #X connect 71 0 72 0;
 #X connect 72 0 56 0;
 #X connect 73 0 66 0;
+#X connect 77 0 78 0;
+#X connect 78 0 79 0;
+#X connect 79 0 80 0;
+#X connect 81 0 82 0;
+#X connect 82 0 84 0;
+#X connect 83 0 81 0;
 #X coords 0 -1 1 1 211 145 1 273 164;

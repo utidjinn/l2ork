@@ -1,0 +1,16 @@
+#N canvas 251 103 774 184 10;
+#X text 9 8 Instrument Guide;
+#X text 17 36 Wiimote Controls;
+#X text 17 55 - Up and down controls volume level for track 1;
+#X text 17 106 - +/- toggles which track is currently selected for
+recording;
+#X text 17 138 - home button clears the currently selected track;
+#X text 17 157 - A button starts recording on currently selected track
+;
+#X text 17 74 - Holding B causes playback speed of track 1 to change
+based on wiimote rotation;
+#X text 396 36 Nunchuk Controls;
+#X text 396 55 - Up and down controls volume level for track 2;
+#X text 396 74 - Holding Z causes playback speed of track 2 to change
+based on nunchuk rotation;
+#X text 396 106 - C button mutes all audio output;
