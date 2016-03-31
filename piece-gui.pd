@@ -1,0 +1,5 @@
+#N canvas 387 220 766 427 10;
+#X obj 4 129 vu 107 400 gui-track-1-volume Track\ 1\ Volume -1 -8 0
+10 -66577 -1 0 0;
+#X obj 651 129 vu 107 400 gui-track-2-volume Track\ 2\ Volume -1 -8
+0 10 -66577 -1 0 0;

@@ -1,0 +1,11 @@
+#N canvas 819 308 450 300 10;
+#N canvas 52 265 450 300 conducting_functions 0;
+#X obj 24 15 l2ork_conductor;
+#X obj 23 244 s l2ork-conductor-broadcast-custom;
+#X obj 51 56 r conductor-text;
+#X obj 38 145 prepend text;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 181 -13 pd conducting_functions;
+#X symbolatom 20 170 60 0 0 0 - - conductor-text, f 60;
+#X text 20 149 Directions;
