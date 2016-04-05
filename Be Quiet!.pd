@@ -1,4 +1,4 @@
-#N canvas 961 141 352 158 10;
+#N canvas 951 131 343 166 10;
 #X declare -lib maxlib;
 #N canvas 731 14 511 467 wiimote 0;
 #X msg 35 301 disconnect;
@@ -518,8 +518,8 @@
 #X connect 34 0 35 0;
 #X connect 35 0 33 0;
 #X coords 0 -1 1 1 84 60 2 142 12;
-#X restore 140 77 pd wiimote;
-#X obj 294 36 l2ork_output~;
+#X restore 120 87 pd wiimote;
+#X obj 274 46 l2ork_output~;
 #N canvas 530 125 479 260 pre-dac 0;
 #X obj 92 115 r filter_freq;
 #X obj -13 -21 inlet~;
@@ -557,13 +557,13 @@ cpu;
 #X connect 16 0 11 0;
 #X connect 16 0 6 0;
 #X connect 17 0 5 0;
-#X restore 294 13 pd pre-dac;
-#X obj 371 -6 loadbang;
-#X msg 400 14 1;
-#X obj 402 40 tgl 15 0 empty l2ork-client-connection-gui connection
+#X restore 274 19 pd pre-dac;
+#X obj 351 -6 loadbang;
+#X msg 380 20 1;
+#X obj 382 50 tgl 15 0 empty l2ork-client-connection-gui connection
 17 7 0 8 -262144 -1 -1 0 1;
-#X msg 371 14 15;
-#X obj 140 -11 l2ork_monitor_text_large;
+#X msg 351 20 15;
+#X obj 120 -11 l2ork_monitor_text_large;
 #N canvas 47 14 656 690 sound 0;
 #X obj 10 -33 adc~ 1;
 #X obj 10 -12 *~ 5;
@@ -874,42 +874,42 @@ floor.;
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;
 #X connect 7 0 15 0;
-#X restore 294 -10 pd sound;
-#N canvas 660 78 656 690 gui 0;
-#X obj 79 -27 r l2ork-conductor-custom-data;
-#X symbolatom 79 36 60 0 0 0 - - -, f 60;
-#X msg 79 56 \; l2ork-conductor-text-monitor label \$1;
-#X obj 79 -6 route text;
-#X obj 79 15 tosymbol;
-#X obj 554 -48 l2ork_monitor;
-#X obj 80 124 r track-1-volume;
-#X obj 208 124 r track-2-volume;
-#X text 316 124 Defined in voice.pd;
-#X text 80 -48 Conductor Messaging;
-#X text 81 102 Volume GUI;
-#X obj 80 166 s gui-track-1-volume;
-#X obj 208 166 s gui-track-2-volume;
-#X obj 80 145 expr $f1*100-100;
-#X obj 208 145 expr $f1*100-100;
-#X text 80 205 Track Position GUI;
-#X obj 81 227 r position-track-1;
-#X obj 219 229 r position-track-2;
-#X text 338 226 Sent from looper.pd;
-#X obj 81 248 s gui-position-track-1;
-#X obj 219 248 s gui-position-track-2;
-#X text 304 -49 This files handles any backend-GUIprocessing that
+#X restore 274 -10 pd sound;
+#N canvas 650 14 656 690 gui 0;
+#X obj 9 -27 r l2ork-conductor-custom-data;
+#X symbolatom 9 36 60 0 0 0 - - -, f 60;
+#X msg 9 56 \; l2ork-conductor-text-monitor label \$1;
+#X obj 9 -6 route text;
+#X obj 9 15 tosymbol;
+#X obj 484 -48 l2ork_monitor;
+#X obj 10 124 r track-1-volume;
+#X obj 138 124 r track-2-volume;
+#X text 246 124 Defined in voice.pd;
+#X text 10 -48 Conductor Messaging;
+#X text 11 102 Volume GUI;
+#X obj 10 166 s gui-track-1-volume;
+#X obj 138 166 s gui-track-2-volume;
+#X obj 10 145 expr $f1*100-100;
+#X obj 138 145 expr $f1*100-100;
+#X text 10 205 Track Position GUI;
+#X obj 11 227 r position-track-1;
+#X obj 149 229 r position-track-2;
+#X text 268 226 Sent from looper.pd;
+#X obj 11 248 s gui-position-track-1;
+#X obj 149 248 s gui-position-track-2;
+#X text 234 -49 This files handles any backend-GUIprocessing that
 needs to occur. Routes results to piece-gui.pd \, which recievesthe
 values through recieve tags;
-#X obj 81 308 r current-track;
-#X obj 81 328 s gui-current-track;
-#X text 81 288 Currently Selected Track Information;
-#X text 257 309 sent from voice.pd;
-#X obj 53 381 r track-1-acceleration;
-#X obj 216 381 r track-2-acceleration;
-#X obj 53 402 s gui-track-1-acceleration;
-#X obj 216 402 s gui-track-2-acceleration;
-#X text 399 383 sent from looper.pd;
-#X text 54 360 Track Acceleration Information;
+#X obj 11 308 r current-track;
+#X obj 11 328 s gui-current-track;
+#X text 11 288 Currently Selected Track Information;
+#X text 187 309 sent from voice.pd;
+#X obj 11 381 r track-1-acceleration;
+#X obj 174 381 r track-2-acceleration;
+#X obj 11 402 s gui-track-1-acceleration;
+#X obj 174 402 s gui-track-2-acceleration;
+#X text 357 383 sent from looper.pd;
+#X text 12 360 Track Acceleration Information;
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 3 0 4 0;
@@ -923,10 +923,11 @@ values through recieve tags;
 #X connect 22 0 23 0;
 #X connect 26 0 28 0;
 #X connect 27 0 29 0;
-#X restore 235 77 pd gui;
-#X text 399 105 WIPIan Crutcher;
-#X obj 140 11 piece-gui;
-#X obj 140 33 cheat-sheet;
+#X restore 215 87 pd gui;
+#X text 379 115 WIPIan Crutcher;
+#X obj 120 11 piece-gui;
+#X obj 120 33 cheat-sheet;
+#X text 120 55 Handedness doesn't do anything right now!;
 #X connect 2 0 1 0;
 #X connect 2 1 1 1;
 #X connect 3 0 6 0;
