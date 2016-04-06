@@ -1,4 +1,4 @@
-#N canvas 951 131 343 166 10;
+#N canvas 1010 530 343 166 10;
 #X declare -lib maxlib;
 #N canvas 731 14 511 467 wiimote 0;
 #X msg 35 301 disconnect;
@@ -564,7 +564,7 @@ cpu;
 17 7 0 8 -262144 -1 -1 0 1;
 #X msg 351 20 15;
 #X obj 120 -11 l2ork_monitor_text_large;
-#N canvas 47 14 656 690 sound 0;
+#N canvas 47 142 255 350 sound 1;
 #X obj 10 -33 adc~ 1;
 #X obj 10 -12 *~ 5;
 #N canvas 3 75 450 218 noisegate 0;
@@ -854,18 +854,18 @@ floor.;
 #X obj 10 62 @pd_extra/K12/fx_multitap 0;
 #X obj 11 164 @pd_extra/K12/fx_reverb 0;
 #X obj 11 258 voice;
-#X obj 294 99 nbx 5 20 -1e+37 1e+37 0 1 filter_freq empty empty -90
+#X obj 124 99 nbx 5 20 -1e+37 1e+37 0 1 filter_freq empty empty -90
 24 0 12 -191407 -1 -1 300 256 0;
-#X text 290 118 filter frequency;
-#X obj 294 180 nbx 5 20 -1e+37 1e+37 0 1 bandpass_q empty empty -90
+#X text 120 118 filter frequency;
+#X obj 124 180 nbx 5 20 -1e+37 1e+37 0 1 bandpass_q empty empty -90
 24 0 12 -191407 -1 -1 0.25 256 0;
-#X obj 294 139 nbx 5 20 -1e+37 1e+37 0 1 bandpass_freq empty empty
+#X obj 124 139 nbx 5 20 -1e+37 1e+37 0 1 bandpass_freq empty empty
 -90 24 0 12 -191407 -1 -1 1600 256 0;
-#X text 291 157 bandpass frequency;
-#X text 292 200 bandpass q;
-#X obj 294 221 nbx 5 20 -1e+37 1e+37 0 1 noisegate empty empty -90
+#X text 121 157 bandpass frequency;
+#X text 122 200 bandpass q;
+#X obj 124 221 nbx 5 20 -1e+37 1e+37 0 1 noisegate empty empty -90
 24 0 12 -191407 -1 -1 5 256 0;
-#X obj 10 564 outlet~;
+#X obj 11 281 outlet~;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 5 0;
