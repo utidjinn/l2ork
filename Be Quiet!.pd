@@ -1,5 +1,7 @@
-#N canvas 970 490 343 166 10;
+#N canvas 849 345 362 187 10;
 #X declare -lib maxlib;
+#X obj 6 4 cnv 15 156 80 empty empty GUI\ Windows 5 8 0 14 -147596
+-1 0;
 #N canvas 731 14 511 467 wiimote 0;
 #X msg 35 301 disconnect;
 #X obj 138 136 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -400,7 +402,7 @@
 #X connect 10 3 5 0;
 #X connect 11 0 4 0;
 #X restore 138 424 pd \$0-button-stuff;
-#X obj 31 153 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 31 153 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X text 58 197 Enable metro to get accelerometer uppdates;
 #X text 84 208 (xyz wiimote \, xyz nunchuk \, ir);
@@ -408,9 +410,9 @@
 #X msg 73 135 discover;
 #X obj 138 336 disis_wiimote_legacy;
 #X obj 32 183 metro 20;
-#X obj 186 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 186 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 206 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 206 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 145 15 bng 17 250 50 0 empty empty 1 6 9 0 10 -4034 -1 -1;
 #X obj 165 15 bng 17 250 50 0 empty empty 1 6 9 0 10 -260097 -1 -1
@@ -518,8 +520,8 @@
 #X connect 34 0 35 0;
 #X connect 35 0 33 0;
 #X coords 0 -1 1 1 84 60 2 142 12;
-#X restore 120 87 pd wiimote;
-#X obj 274 46 l2ork_output~;
+#X restore 6 122 pd wiimote;
+#X obj 178 82 l2ork_output~;
 #N canvas 530 125 479 260 pre-dac 0;
 #X obj 92 115 r filter_freq;
 #X obj -13 -21 inlet~;
@@ -557,16 +559,16 @@ cpu;
 #X connect 16 0 11 0;
 #X connect 16 0 6 0;
 #X connect 17 0 5 0;
-#X restore 274 19 pd pre-dac;
-#X obj 351 -6 loadbang;
-#X msg 380 20 1;
-#X obj 382 50 tgl 15 0 empty l2ork-client-connection-gui connection
+#X restore 178 60 pd pre-dac;
+#X obj 255 40 loadbang;
+#X msg 284 60 1;
+#X obj 286 86 tgl 15 0 empty l2ork-client-connection-gui connection
 17 7 0 8 -262144 -1 -1 0 1;
-#X msg 351 20 15;
-#X obj 120 -11 l2ork_monitor_text_large;
-#N canvas 300 49 255 350 sound 0;
-#X obj 10 -33 adc~ 1;
-#X obj 10 -12 *~ 5;
+#X msg 255 60 15;
+#X obj 10 22 l2ork_monitor_text_large;
+#N canvas 120 14 643 243 sound 0;
+#X obj 225 -52 adc~ 1;
+#X obj 225 -31 *~ 5;
 #N canvas 3 75 450 218 noisegate 0;
 #X floatatom 1017 296 0 0 0 0 - - -;
 #N canvas 99 50 648 509 fft-analysis 0;
@@ -847,28 +849,25 @@ floor.;
 #X connect 12 0 1 0;
 #X connect 14 0 9 0;
 #X connect 15 0 0 0;
-#X restore 10 21 pd noisegate;
-#X obj 120 -13 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+#X restore 225 -10 pd noisegate;
+#X obj 335 -42 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
 -1 -1;
-#X obj 44 -1 r noisegate;
-#X obj 10 62 @pd_extra/K12/fx_multitap 0;
-#X obj 11 164 @pd_extra/K12/fx_reverb 0;
-#X obj 124 99 nbx 5 20 -1e+37 1e+37 0 1 filter_freq empty empty -90
+#X obj 259 -30 r noisegate;
+#X obj 524 -31 nbx 5 20 -1e+37 1e+37 0 1 filter_freq empty empty -90
 24 0 12 -191407 -1 -1 300 256 0;
-#X text 120 118 filter frequency;
-#X obj 124 180 nbx 5 20 -1e+37 1e+37 0 1 bandpass_q empty empty -90
+#X text 520 -12 filter frequency;
+#X obj 524 50 nbx 5 20 -1e+37 1e+37 0 1 bandpass_q empty empty -90
 24 0 12 -191407 -1 -1 0.25 256 0;
-#X obj 124 139 nbx 5 20 -1e+37 1e+37 0 1 bandpass_freq empty empty
--90 24 0 12 -191407 -1 -1 1600 256 0;
-#X text 121 157 bandpass frequency;
-#X text 122 200 bandpass q;
-#X obj 124 221 nbx 5 20 -1e+37 1e+37 0 1 noisegate empty empty -90
-24 0 12 -191407 -1 -1 5 256 0;
-#X obj 11 281 outlet~;
-#N canvas 635 91 524 207 voice 0;
-#X obj 301 199 outlet~;
-#X obj 301 85 inlet~;
-#X text 240 42 Current Track;
+#X obj 524 9 nbx 5 20 -1e+37 1e+37 0 1 bandpass_freq empty empty -90
+24 0 12 -191407 -1 -1 1600 256 0;
+#X text 521 27 bandpass frequency;
+#X text 522 70 bandpass q;
+#X obj 524 91 nbx 5 20 -1e+37 1e+37 0 1 noisegate empty empty -90 24
+0 12 -191407 -1 -1 5 256 0;
+#X obj 414 -24 @pd_extra/K12/fx_multitap 0;
+#X obj 415 78 @pd_extra/K12/fx_reverb 0;
+#X obj 225 92 outlet~;
+#X text 129 -36 Current Track;
 #N canvas 354 104 450 300 wii_buttons-a-b 0;
 #X obj 13 85 r wii-btn02-set;
 #X obj 13 110 route 4 8;
@@ -877,7 +876,7 @@ floor.;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
-#X restore 90 129 pd wii_buttons-a-b;
+#X restore 1 36 pd wii_buttons-a-b;
 #N canvas 354 104 450 300 clear_track 0;
 #X obj 33 135 tabwrite~ loopArray0;
 #X obj 33 154 tabwrite~ loopArray1;
@@ -902,7 +901,7 @@ floor.;
 #X connect 8 0 1 0;
 #X connect 9 0 0 0;
 #X connect 9 1 1 0;
-#X restore 133 94 pd clear_track;
+#X restore 25 16 pd clear_track;
 #N canvas 720 146 450 300 global_mute 0;
 #X obj 45 103 * 1;
 #X obj 46 139 outlet;
@@ -921,11 +920,11 @@ floor.;
 #X connect 5 0 0 0;
 #X connect 6 0 0 0;
 #X connect 8 0 6 0;
-#X restore 330 153 pd global_mute;
-#X obj 178 21 loadbang;
-#X obj 301 175 *~;
-#X obj 232 63 hradio 31 1 0 2 current-track empty empty 0 -8 0 10 -262144
--1 -1 0;
+#X restore 252 52 pd global_mute;
+#X obj 67 -57 loadbang;
+#X obj 225 71 *~;
+#X obj 124 -15 hradio 31 1 0 2 current-track empty empty 0 -8 0 10
+-262144 -1 -1 0;
 #N canvas 380 108 450 300 minus-plus 0;
 #X obj 23 89 r wii-btn02-set;
 #X obj 178 82 r wii-btn01-set;
@@ -940,10 +939,9 @@ floor.;
 #X connect 3 0 5 0;
 #X connect 4 0 6 0;
 #X connect 5 0 6 0;
-#X restore 235 21 pd minus-plus;
-#X text 300 64 Signal to record/output;
-#X text 351 199 Total outgoing signal;
-#N canvas 57 24 1311 718 recording 0;
+#X restore 124 -57 pd minus-plus;
+#X text 274 92 Total outgoing signal;
+#N canvas 442 58 431 361 recording 0;
 #X obj 321 40 inlet~;
 #X obj 372 41 inlet~;
 #X obj 218 181 tabwrite~ loopArray0;
@@ -10926,8 +10924,8 @@ floor.;
 0.0412876 0.0412422 0.0411968 0.0411514 0.041106 0.0410605 0.0410151
 0.0409697 0.0409243 0.0408788 0.0408334 0.040788 0.0407426;
 #X coords 0 1 192000 -1 200 140 1;
-#X restore 77 257 graph;
-#X obj 77 219 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X restore 77 207 graph;
+#X obj 77 169 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #N canvas 424 174 450 300 build-ramp 0;
 #X obj 70 223 tabwrite~ ramp;
@@ -10955,11 +10953,22 @@ floor.;
 #X connect 9 2 5 0;
 #X connect 10 0 5 0;
 #X connect 10 0 0 0;
-#X restore 77 237 pd build-ramp;
+#X restore 77 187 pd build-ramp;
+#X obj 121 13 s recording;
+#X obj 304 212 r recording;
+#X obj 304 232 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 304 250 metro 1000;
+#X obj 304 270 cup;
+#X obj 304 293 route 4;
+#X obj 304 320 s stopped;
+#X floatatom 435 301 5 0 0 0 - - -, f 5;
+#X msg 376 251 setbang 0;
 #X connect 0 0 12 0;
 #X connect 1 0 13 0;
 #X connect 4 0 6 0;
 #X connect 4 0 11 0;
+#X connect 4 0 19 0;
 #X connect 5 0 2 0;
 #X connect 5 1 3 0;
 #X connect 6 0 5 0;
@@ -10975,10 +10984,19 @@ floor.;
 #X connect 15 0 12 1;
 #X connect 15 0 13 1;
 #X connect 17 0 18 0;
-#X restore 195 149 pd recording;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 21 0 27 0;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 23 0 26 0;
+#X connect 24 0 21 0;
+#X connect 24 0 25 0;
+#X connect 27 0 23 0;
+#X restore 106 56 pd recording;
 #N canvas 715 108 450 300 track-1-processing 0;
 #X obj 351 -255 vsl 18 79 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4957 1;
+-1 -1 0 1;
 #N canvas 414 164 450 300 wii-pitch 0;
 #X obj 79 199 outlet;
 #X obj 79 38 r wii-pitch-set;
@@ -11088,10 +11106,10 @@ floor.;
 #X connect 11 0 12 0;
 #X connect 13 0 11 0;
 #X connect 14 0 7 1;
-#X restore 310 108 pd track-1-processing;
+#X restore 235 11 pd track-1-processing;
 #N canvas 719 83 450 300 track-2-processing 0;
 #X obj 200 -41 vsl 15 84 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5573 1;
+-1 -1 0 1;
 #N canvas 664 251 450 300 nc-yaxis 0;
 #X obj 11 92 average 10;
 #X obj 11 113 change;
@@ -11203,14 +11221,14 @@ floor.;
 #X connect 12 0 10 0;
 #X connect 13 0 14 0;
 #X connect 14 0 8 0;
-#X restore 321 132 pd track-2-processing;
+#X restore 244 32 pd track-2-processing;
 #N canvas 434 184 450 300 home-button 0;
 #X obj 10 8 r wii-btn02-set;
 #X obj 10 28 route 128;
 #X obj 10 48 outlet;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X restore 133 73 pd home-button;
+#X restore 25 -5 pd home-button;
 #N canvas 188 180 450 300 track-position 0;
 #X text 437 -191 Array Size;
 #X obj 436 -149 s arraySize;
@@ -11243,31 +11261,27 @@ floor.;
 #X connect 10 0 11 0;
 #X connect 11 0 12 0;
 #X connect 12 0 13 0;
-#X restore 495 27 pd track-position;
-#X connect 1 0 12 2;
-#X connect 1 0 12 3;
-#X connect 1 0 7 0;
-#X connect 3 1 12 0;
-#X connect 5 0 7 1;
-#X connect 6 0 8 0;
-#X connect 7 0 0 0;
-#X connect 8 0 4 1;
-#X connect 8 0 12 1;
-#X connect 9 0 8 0;
-#X connect 13 0 7 0;
-#X connect 14 0 7 0;
-#X connect 15 0 4 0;
-#X restore 11 260 pd voice;
+#X restore 5 93 pd track-position;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X connect 2 0 5 0;
+#X connect 2 0 24 2;
+#X connect 2 0 24 3;
+#X connect 2 0 20 0;
 #X connect 3 0 2 2;
 #X connect 4 0 2 1;
-#X connect 5 0 6 0;
-#X connect 6 0 15 0;
-#X connect 15 0 14 0;
-#X restore 274 -10 pd sound;
-#N canvas 703 78 656 690 gui 0;
+#X connect 12 0 13 0;
+#X connect 16 1 24 0;
+#X connect 18 0 20 1;
+#X connect 19 0 21 0;
+#X connect 20 0 14 0;
+#X connect 21 0 17 1;
+#X connect 21 0 24 1;
+#X connect 22 0 21 0;
+#X connect 25 0 20 0;
+#X connect 26 0 20 0;
+#X connect 27 0 17 0;
+#X restore 178 40 pd sound;
+#N canvas 652 14 656 690 gui 0;
 #X obj 9 -27 r l2ork-conductor-custom-data;
 #X symbolatom 9 36 60 0 0 0 - - -, f 60;
 #X msg 9 56 \; l2ork-conductor-text-monitor label \$1;
@@ -11281,29 +11295,35 @@ floor.;
 #X text 11 102 Volume GUI;
 #X obj 10 186 s gui-track-1-volume;
 #X obj 208 187 s gui-track-2-volume;
-#X text 10 255 Track Position GUI;
-#X obj 11 277 r position-track-1;
-#X obj 149 279 r position-track-2;
-#X text 268 276 Sent from looper.pd;
-#X obj 11 298 s gui-position-track-1;
-#X obj 149 298 s gui-position-track-2;
+#X text 10 215 Track Position GUI;
+#X obj 11 237 r position-track-1;
+#X obj 149 239 r position-track-2;
+#X text 268 236 Sent from looper.pd;
+#X obj 11 258 s gui-position-track-1;
+#X obj 149 258 s gui-position-track-2;
 #X text 234 -49 This files handles any backend-GUIprocessing that
 needs to occur. Routes results to piece-gui.pd \, which recievesthe
 values through recieve tags;
-#X obj 11 358 r current-track;
-#X obj 11 378 s gui-current-track;
-#X text 11 338 Currently Selected Track Information;
-#X text 187 359 sent from voice.pd;
-#X obj 11 431 r track-1-acceleration;
-#X obj 174 431 r track-2-acceleration;
-#X obj 11 452 s gui-track-1-acceleration;
-#X obj 174 452 s gui-track-2-acceleration;
-#X text 357 433 sent from looper.pd;
-#X text 12 410 Track Acceleration Information;
+#X obj 11 318 r current-track;
+#X obj 11 338 s gui-current-track;
+#X text 11 298 Currently Selected Track Information;
+#X text 187 319 sent from voice.pd;
+#X obj 11 391 r track-1-acceleration;
+#X obj 174 391 r track-2-acceleration;
+#X obj 11 412 s gui-track-1-acceleration;
+#X obj 174 412 s gui-track-2-acceleration;
+#X text 357 393 sent from looper.pd;
+#X text 12 370 Track Acceleration Information;
 #X obj 10 165 expr $f1*100-100;
 #X obj 208 145 expr ((log($f1)/2.302585)+2)/2;
 #X obj 208 166 expr $f1*100-100;
 #X obj 10 145 expr ((log($f1)/2.302585)+2)/2;
+#X text 12 444 Event Messaging;
+#X obj 12 465 r recording;
+#X obj 150 465 r stopped;
+#X obj 131 514 s gui-recording;
+#X msg 150 485 color -1 0;
+#X msg 12 485 color -1.67117e+07 0;
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 3 0 4 0;
@@ -11319,15 +11339,25 @@ values through recieve tags;
 #X connect 31 0 32 0;
 #X connect 32 0 12 0;
 #X connect 33 0 30 0;
-#X restore 215 87 pd gui;
-#X text 379 115 WIPIan Crutcher;
-#X obj 120 11 piece-gui;
-#X obj 120 33 cheat-sheet;
-#X text 120 55 Handedness doesn't do anything right now!;
-#X connect 2 0 1 0;
-#X connect 2 1 1 1;
-#X connect 3 0 6 0;
-#X connect 3 0 4 0;
-#X connect 4 0 1 7;
-#X connect 6 0 1 6;
-#X connect 8 0 2 0;
+#X connect 35 0 39 0;
+#X connect 36 0 38 0;
+#X connect 38 0 37 0;
+#X connect 39 0 37 0;
+#X restore 94 125 pd gui;
+#X text 95 151 WIPIan Crutcher;
+#X obj 10 42 piece-gui;
+#X obj 10 62 cheat-sheet;
+#X text 6 90 Handedness doesn't do anything right now!;
+#X obj 221 198 l2ork_toggle_menu 0;
+#X obj 31 245 l2ork_toggle_scrollbars 0;
+#X obj 52 219 l2ork_toggle_ontop 1;
+#X obj 5 197 l2ork_set_canvas_background #cc5500;
+#X obj 178 6 l2ork_toggle_resize 0;
+#X obj 118 62 events;
+#X connect 3 0 2 0;
+#X connect 3 1 2 1;
+#X connect 4 0 7 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 7;
+#X connect 7 0 2 6;
+#X connect 9 0 3 0;

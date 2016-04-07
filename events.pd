@@ -1,0 +1,8 @@
+#N canvas 805 73 468 200 10;
+#X obj 0 0 cnv 115 115 115 empty gui-recording empty 20 130 0 50 -1
+-262144 0;
+#X obj 120 89 l2ork_toggle_scrollbars 0;
+#X obj 120 47 l2ork_toggle_resize 1;
+#X obj 120 68 l2ork_toggle_menu 1;
+#X obj 120 26 l2ork_set_canvas_background #ffffff;
+#X obj 120 5 l2ork_toggle_ontop 0;
