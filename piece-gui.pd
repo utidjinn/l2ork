@@ -1,4 +1,4 @@
-#N canvas 47 104 644 596 10;
+#N canvas 47 94 644 596 10;
 #X obj 4 129 vu 107 400 gui-track-1-volume Track\ 1\ Volume -1 -8 0
 10 -66577 -1 0 0;
 #X obj 523 129 vu 107 400 gui-track-2-volume Track\ 2\ Volume -1 -8
@@ -11532,12 +11532,12 @@
 #X coords 0 1 192000 -1 400 150 1;
 #X restore 118 334 graph;
 #X obj 118 283 hsl 395 45 0 1 0 0 empty gui-position-track-1 empty
--2 -8 0 10 -262144 -1 -1 2993 1;
+-2 -8 0 10 -262144 -1 -1 22679 1;
 #X obj 118 488 hsl 395 45 0 1 0 0 empty gui-position-track-2 empty
--2 -8 0 10 -262144 -1 -1 6325 1;
+-2 -8 0 10 -262144 -1 -1 24393 1;
 #X obj 203 553 hradio 116 1 0 2 empty gui-current-track Currently\ Selected\ Track
 0 -8 0 10 -262144 -1 -1 0;
 #X obj 440 553 hsl 189 116 -0.5 0.5 0 0 empty gui-track-2-acceleration
-Track\ 2\ Acceleration -2 -8 0 10 -262144 -33289 -1 17913 1;
+Track\ 2\ Acceleration -2 -8 0 10 -262144 -33289 -1 1233 1;
 #X obj 4 553 hsl 189 116 -0.5 0.5 0 0 empty gui-track-1-acceleration
-Track\ 1\ Acceleration -2 -8 0 10 -262144 -1 -1 11818 1;
+Track\ 1\ Acceleration -2 -8 0 10 -262144 -1 -1 9581 1;
