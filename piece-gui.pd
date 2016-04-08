@@ -1,10 +1,14 @@
-#N canvas 47 84 644 581 10;
+#N canvas 52 26 644 581 10;
+#X obj 118 298 hsl 395 150 0 1 0 0 empty gui-position-track-2 empty
+-2 -8 0 10 -262144 -1 -1 4608 1;
+#X obj 118 93 hsl 396 150 0 1 0 0 empty gui-position-track-1 empty
+-2 -8 0 10 -262144 -1 -1 8481 1;
 #X obj 4 93 vu 107 400 gui-track-1-volume Track\ 1\ Volume -1 -8 0
 10 -66577 -1 0 0;
 #X obj 523 93 vu 107 400 gui-track-2-volume Track\ 2\ Volume -1 -8
 0 10 -66577 -1 0 0;
 #N canvas 374 124 450 300 (subpatch) 0;
-#X array loopArray0 192000 float 3 black black;
+#X array loopArray0 192000 float 3 black #006ec9;
 #A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -5768,7 +5772,7 @@
 #X coords 0 1 192000 -1 400 150 1;
 #X restore 118 93 graph;
 #N canvas 424 174 450 300 (subpatch) 0;
-#X array loopArray1 192000 float 3 black black;
+#X array loopArray1 192000 float 3 black #006ec9;
 #A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -11531,19 +11535,19 @@
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
 #X coords 0 1 192000 -1 400 150 1;
 #X restore 118 298 graph;
-#X obj 118 247 hsl 395 45 0 1 0 0 empty gui-position-track-1 empty
--2 -8 0 10 -262144 -1 -1 28266 1;
-#X obj 118 452 hsl 395 45 0 1 0 0 empty gui-position-track-2 empty
--2 -8 0 10 -262144 -1 -1 26051 1;
 #X obj 203 517 hradio 116 1 0 2 empty gui-current-track Currently\ Selected\ Track
 0 -8 0 10 -262144 -1 -1 0;
 #X obj 440 517 hsl 189 116 -0.5 0.5 0 0 empty gui-track-2-acceleration
 Track\ 2\ Acceleration -2 -8 0 10 -262144 -33289 -1 18445 1;
 #X obj 4 517 hsl 189 116 -0.5 0.5 0 0 empty gui-track-1-acceleration
-Track\ 1\ Acceleration -2 -8 0 10 -262144 -1 -1 9427 1;
+Track\ 1\ Acceleration -2 -8 0 10 -262144 -128992 -1 9580 1;
 #X obj 581 507 cnv 4 4 145 empty empty empty 20 12 0 14 -1 -66577 0
 ;
 #X text 503 637 Normal Speed;
 #X obj 146 507 cnv 4 4 145 empty empty empty 20 12 0 14 -1 -66577 0
 ;
 #X text 68 637 Normal Speed;
+#X obj 118 450 hsl 394 47 0 400 0 0 empty gui-record-progress-2 empty
+-2 -8 0 10 -163841 -1 -262144 39300 1;
+#X obj 118 245 hsl 394 47 0 400 0 0 empty gui-record-progress-1 empty
+-2 -8 0 10 -163841 -1 -262144 39300 1;

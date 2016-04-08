@@ -1,4 +1,4 @@
-#N canvas 221 73 774 215 10;
+#N canvas 211 63 774 275 10;
 #X text 9 8 Instrument Guide;
 #X text 17 36 Wiimote Controls;
 #X text 17 106 - +/- toggles which track is currently selected for
@@ -14,3 +14,6 @@ recording;
 based on nunchuk rotation.;
 #X text 17 74 - Holding B causes playback speed of track 1 to change
 based on wiimote rotation.;
+#X text 17 196 - Right on D-pad toggles mic mute;
+#X text 17 215 - Up on D-pad clears all tracks and toggles global mute
+on;
