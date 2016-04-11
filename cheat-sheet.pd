@@ -1,4 +1,4 @@
-#N canvas 211 63 774 275 10;
+#N canvas 201 53 774 275 10;
 #X text 9 8 Instrument Guide;
 #X text 17 36 Wiimote Controls;
 #X text 17 106 - +/- toggles which track is currently selected for
@@ -9,7 +9,6 @@ recording;
 #X text 396 36 Nunchuk Controls;
 #X text 17 55 - Pitch controls volume level for track 1;
 #X text 396 55 - Pitch controls volume level for track 2;
-#X text 17 177 - Down on D-pad mutes all outgoing sound;
 #X text 396 74 - Holding Z causes playback speed of track 2 to change
 based on nunchuk rotation.;
 #X text 17 74 - Holding B causes playback speed of track 1 to change
@@ -17,3 +16,7 @@ based on wiimote rotation.;
 #X text 17 196 - Right on D-pad toggles mic mute;
 #X text 17 215 - Up on D-pad clears all tracks and toggles global mute
 on;
+#X text 17 177 - Down on D-pad toggles mute on all outgoing sound;
+#X text 396 106 - Joystick adds an effect based on the hemisphere it
+is in - Intensity of effect is controlled by how close to vertical
+the joystick is in each respective hemisphere;
