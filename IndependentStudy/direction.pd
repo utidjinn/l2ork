@@ -1,28 +1,24 @@
-#N canvas 843 82 485 278 10;
+#N canvas 693 16 661 457 10;
 #X obj 48 -6 vsl 100 129 0 1 0 0 empty sparse-dense-meter empty 0 -9
 0 10 -262144 -1 -1 0 1;
 #X obj 47 131 cnv 39 100 39 empty track-1-indicator Track\ 1 20 12
-0 14 -228856 -1 0;
+0 14 -228846 -1 0;
 #X obj 47 173 cnv 39 100 39 empty track-2-indicator Track\ 2 20 12
-0 14 -228856 -1 0;
+0 14 -228846 -1 0;
 #X obj 152 131 hsl 129 81 0 1 0 1 empty speed-meter empty -2 -8 0 10
 -262144 -1 -1 0 1;
-#X text -1 112 Nothing;
-#X text 5 77 Sparse;
-#X text 11 -6 Dense;
-#X obj 152 -6 cnv 15 134 25 empty stage-1 White\ Noise 20 12 0 14 -3201
+#X obj 152 -6 cnv 15 134 25 empty stage-1 White\ Noise 20 12 0 14 -228846
 -1 0;
-#X obj 152 21 cnv 15 134 25 empty stage-2 Lists 20 12 0 14 -228856
+#X obj 152 21 cnv 15 134 25 empty stage-2 Lists 20 12 0 14 -228846
 -1 0;
-#X obj 152 48 cnv 15 134 25 empty stage-3 "lalala" 20 12 0 14 -228856
+#X obj 152 48 cnv 15 134 25 empty stage-3 "lalala" 20 12 0 14 -228846
 -1 0;
-#X obj 152 75 cnv 15 134 25 empty stage-4 Sing 20 12 0 14 -228856 -1
+#X obj 152 75 cnv 15 134 25 empty stage-4 Sing 20 12 0 14 -228846 -1
 0;
-#X obj 152 102 cnv 15 134 25 empty stage-5 L2ork\ Out 20 12 0 14 -228856
+#X obj 152 102 cnv 15 134 25 empty stage-5 L2ork\ Out 20 12 0 14 -228846
 -1 0;
-#X text 152 217 Suggested Speed;
-#X text 289 131 Light up suggested speed when necessary;
-#X text 289 -6 Stages light up to suggest/allow soundsto be made
-;
 #X text 48 -26 How dense recordings are;
-#X text 47 215 Track Usage;
+#X obj 307 217 cnv 175 175 175 density-speed-indicator-frame-s density-speed-indicator-frame-r
+empty 20 12 0 14 -233017 -66577 0;
+#X obj 381 290 cnv 27 27 27 empty density-speed-indicator empty 20
+12 0 14 -260097 -66577 0;

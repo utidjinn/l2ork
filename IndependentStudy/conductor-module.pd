@@ -1,12 +1,12 @@
-#N canvas 53 404 593 300 10;
-#N canvas 593 365 591 300 messaging 0;
+#N canvas 751 14 593 300 10;
+#N canvas 748 78 591 112 messaging 1;
 #X obj 310 86 s l2ork-conductor-broadcast-custom;
 #X obj 317 53 list prepend track;
 #X obj 201 53 list prepend stage;
 #X obj 92 53 list prepend text;
 #X obj 549 53 list prepend density;
-#X floatatom 201 29 5 0 0 0 - - -, f 5;
-#X floatatom 314 29 5 0 0 0 - - -, f 5;
+#X floatatom 201 29 5 0 5 0 - - -, f 5;
+#X floatatom 314 29 5 0 2 0 - - -, f 5;
 #X obj 433 53 list prepend speed;
 #X floatatom 435 29 5 0 1 0 - - -, f 5;
 #X floatatom 549 29 5 0 1 0 - - -, f 5;
@@ -16,7 +16,7 @@
 #X obj 314 5 inlet;
 #X obj 435 5 inlet;
 #X obj 549 5 inlet;
-#X obj 561 133 l2ork_conductor;
+#X obj 569 86 l2ork_conductor;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
 #X connect 3 0 0 0;
@@ -32,7 +32,7 @@
 #X connect 13 0 6 0;
 #X connect 14 0 8 0;
 #X connect 15 0 9 0;
-#X restore 156 134 pd messaging;
+#X restore 236 216 pd messaging;
 #X text -41 196 Options for Messages to effect performer GUI(in order
 of inlet)- text- stage- track- speed- density;
 #X obj -37 7 key;
@@ -47,30 +47,30 @@ of inlet)- text- stage- track- speed- density;
 #X obj 156 1 r count;
 #X obj 156 21 expr if($f1 < 30 \, 1 \, if($f1 < 60 \, 2 \, if($f1 <
 90 \, 3 \, if($f1 < 120 \, 4 \, 0))));
-#X msg 156 94 ... 1 1 0.25 0.25;
-#X obj 156 74 route 1 2 3 4 0;
-#X obj 156 114 unpack s f f f f;
-#X msg 275 100 speed 1 1 0.25 0.25;
+#X msg 156 174 ... 1 1 0.25 0.25;
+#X obj 156 54 route 1 2 3 4 0;
+#X obj 236 196 unpack s f f f f;
 #X msg 32 104 setbang \$1;
 #X floatatom 32 85 5 0 0 0 - - -, f 5;
+#X msg 173 153 speed 2 2 0.25 0.25;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 6 0;
 #X connect 4 0 8 0;
 #X connect 5 0 7 0;
-#X connect 6 0 17 0;
+#X connect 6 0 16 0;
 #X connect 7 0 9 0;
 #X connect 8 0 5 0;
 #X connect 10 0 11 0;
 #X connect 11 0 13 0;
 #X connect 12 0 14 0;
 #X connect 13 0 12 0;
-#X connect 13 1 15 0;
+#X connect 13 1 17 0;
 #X connect 14 0 0 0;
 #X connect 14 1 0 1;
 #X connect 14 2 0 2;
 #X connect 14 3 0 3;
 #X connect 14 4 0 4;
-#X connect 15 0 14 0;
-#X connect 16 0 5 0;
-#X connect 17 0 16 0;
+#X connect 15 0 5 0;
+#X connect 16 0 15 0;
+#X connect 17 0 14 0;
