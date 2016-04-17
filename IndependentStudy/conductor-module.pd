@@ -1,5 +1,5 @@
-#N canvas 751 14 593 300 10;
-#N canvas 748 78 591 112 messaging 1;
+#N canvas 118 245 593 300 10;
+#N canvas 109 315 591 112 messaging 0;
 #X obj 310 86 s l2ork-conductor-broadcast-custom;
 #X obj 317 53 list prepend track;
 #X obj 201 53 list prepend stage;
@@ -36,7 +36,6 @@
 #X text -41 196 Options for Messages to effect performer GUI(in order
 of inlet)- text- stage- track- speed- density;
 #X obj -37 7 key;
-#X obj -37 29 route 10;
 #X obj -37 51 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj -37 126 cup;
@@ -47,30 +46,31 @@ of inlet)- text- stage- track- speed- density;
 #X obj 156 1 r count;
 #X obj 156 21 expr if($f1 < 30 \, 1 \, if($f1 < 60 \, 2 \, if($f1 <
 90 \, 3 \, if($f1 < 120 \, 4 \, 0))));
-#X msg 156 174 ... 1 1 0.25 0.25;
 #X obj 156 54 route 1 2 3 4 0;
 #X obj 236 196 unpack s f f f f;
 #X msg 32 104 setbang \$1;
 #X floatatom 32 85 5 0 0 0 - - -, f 5;
-#X msg 173 153 speed 2 2 0.25 0.25;
-#X connect 2 0 3 0;
-#X connect 3 0 4 0;
+#X msg 171 149 speed 2 2 0.25 0.25;
+#X obj -37 29 route 47;
+#X msg 156 174 ... 1 1 0.5 0.25;
+#X connect 2 0 16 0;
+#X connect 3 0 5 0;
+#X connect 3 0 7 0;
 #X connect 4 0 6 0;
-#X connect 4 0 8 0;
-#X connect 5 0 7 0;
-#X connect 6 0 16 0;
-#X connect 7 0 9 0;
-#X connect 8 0 5 0;
+#X connect 5 0 14 0;
+#X connect 6 0 8 0;
+#X connect 7 0 4 0;
+#X connect 9 0 10 0;
 #X connect 10 0 11 0;
-#X connect 11 0 13 0;
-#X connect 12 0 14 0;
-#X connect 13 0 12 0;
-#X connect 13 1 17 0;
-#X connect 14 0 0 0;
-#X connect 14 1 0 1;
-#X connect 14 2 0 2;
-#X connect 14 3 0 3;
-#X connect 14 4 0 4;
-#X connect 15 0 5 0;
-#X connect 16 0 15 0;
-#X connect 17 0 14 0;
+#X connect 11 0 17 0;
+#X connect 11 1 15 0;
+#X connect 12 0 0 0;
+#X connect 12 1 0 1;
+#X connect 12 2 0 2;
+#X connect 12 3 0 3;
+#X connect 12 4 0 4;
+#X connect 13 0 4 0;
+#X connect 14 0 13 0;
+#X connect 15 0 12 0;
+#X connect 16 0 3 0;
+#X connect 17 0 12 0;

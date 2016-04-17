@@ -1,24 +1,38 @@
-#N canvas 693 16 661 457 10;
-#X obj 48 -6 vsl 100 129 0 1 0 0 empty sparse-dense-meter empty 0 -9
-0 10 -262144 -1 -1 0 1;
-#X obj 47 131 cnv 39 100 39 empty track-1-indicator Track\ 1 20 12
-0 14 -228846 -1 0;
-#X obj 47 173 cnv 39 100 39 empty track-2-indicator Track\ 2 20 12
-0 14 -228846 -1 0;
-#X obj 152 131 hsl 129 81 0 1 0 1 empty speed-meter empty -2 -8 0 10
--262144 -1 -1 0 1;
-#X obj 152 -6 cnv 15 134 25 empty stage-1 White\ Noise 20 12 0 14 -228846
+#N canvas 659 87 653 459 10;
+#X obj -183 276 cnv 15 187 153 empty empty empty 20 12 0 14 -260097
+-66577 0;
+#X obj -183 -25 cnv 15 187 166 empty empty empty 20 12 0 14 -260097
+-66577 0;
+#X obj -180 281 cnv 68 180 68 empty track-1-indicator Track\ 1 40 36
+0 25 -228846 -1 0;
+#X obj -180 358 cnv 68 180 68 empty track-2-indicator Track\ 2 40 36
+0 25 -228846 -1 0;
+#X obj -180 -22 cnv 15 180 27 empty stage-1 White\ Noise 20 12 0 14
+-228846 -1 0;
+#X obj -180 11 cnv 15 180 27 empty stage-2 Lists 20 12 0 14 -228846
 -1 0;
-#X obj 152 21 cnv 15 134 25 empty stage-2 Lists 20 12 0 14 -228846
+#X obj -180 44 cnv 15 180 27 empty stage-3 Sing 20 12 0 14 -228846
 -1 0;
-#X obj 152 48 cnv 15 134 25 empty stage-3 "lalala" 20 12 0 14 -228846
+#X obj -180 77 cnv 15 180 27 empty stage-4 "lalala" 20 12 0 14 -228846
 -1 0;
-#X obj 152 75 cnv 15 134 25 empty stage-4 Sing 20 12 0 14 -228846 -1
-0;
-#X obj 152 102 cnv 15 134 25 empty stage-5 L2ork\ Out 20 12 0 14 -228846
+#X obj -180 110 cnv 15 180 27 empty stage-5 L2ork\ Out 20 12 0 14 -228846
 -1 0;
-#X text 48 -26 How dense recordings are;
-#X obj 307 217 cnv 175 175 175 density-speed-indicator-frame-s density-speed-indicator-frame-r
+#X obj 10 -23 cnv 175 450 450 density-speed-indicator-frame-s density-speed-indicator-frame-r
 empty 20 12 0 14 -233017 -66577 0;
-#X obj 381 290 cnv 27 27 27 empty density-speed-indicator empty 20
-12 0 14 -260097 -66577 0;
+#X obj -182 143 cnv 15 184 64 empty mic-status Mic\ Active 13 32 0
+26 -233017 -66577 0;
+#X obj -182 210 cnv 15 184 64 empty sound-status Sound\ Active 10 33
+0 23 -233017 -66577 0;
+#X obj 232 -23 cnv 7 7 450 empty empty empty 20 12 0 14 -33289 -66577
+0;
+#X obj 186 -23 cnv 15 100 35 empty empty DENSE 5 17 0 30 -1 -262144
+0;
+#X obj 177 393 cnv 15 117 35 empty empty SPARSE 5 17 0 30 -1 -262144
+0;
+#X obj 10 198 cnv 8 449 8 empty empty empty 20 12 0 14 -33289 -66577
+0;
+#X obj 10 182 cnv 15 60 35 empty empty low 2 17 0 30 -1 -262144 0;
+#X obj 387 182 cnv 15 73 35 empty empty high 1 17 0 30 -1 -262144 0
+;
+#X obj 10 337 cnv 27 90 90 empty density-speed-indicator empty 20 12
+0 14 -260097 -66577 0;
