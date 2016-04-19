@@ -116,7 +116,7 @@
 #X obj 199 198 t f f;
 #X obj 226 219 sel 0;
 #X obj 185 648 nbx 5 14 -1 1 0 0 empty empty empty 0 -8 0 10 -262144
--1 -1 0 256 0;
+-1 -1 1 256 0;
 #X obj 129 357 sel 0;
 #X obj 280 285 r calibrate-motionplus;
 #X obj 280 307 t b b;
@@ -405,7 +405,7 @@
 #X connect 10 3 5 0;
 #X connect 11 0 4 0;
 #X restore 138 424 pd \$0-button-stuff;
-#X obj 31 153 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 31 153 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X text 58 197 Enable metro to get accelerometer uppdates;
 #X text 84 208 (xyz wiimote \, xyz nunchuk \, ir);
@@ -413,9 +413,9 @@
 #X msg 73 135 discover;
 #X obj 138 336 disis_wiimote_legacy;
 #X obj 32 183 metro 20;
-#X obj 186 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 186 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 206 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 206 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 145 15 bng 17 250 50 0 empty empty 1 6 9 0 10 -4034 -1 -1;
 #X obj 165 15 bng 17 250 50 0 empty empty 1 6 9 0 10 -260097 -1 -1
@@ -10684,7 +10684,7 @@ cpu;
 #X restore 106 166 pd recording;
 #N canvas 94 137 600 293 track-1-processing 0;
 #X obj 206 -255 vsl 18 79 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3927 1;
 #N canvas 682 14 450 300 wii-pitch 0;
 #X obj 13 191 outlet;
 #X obj 13 48 r wii-pitch-set;
@@ -10803,7 +10803,7 @@ and the speed of the playback on the track.;
 #X restore 233 121 pd track-1-processing;
 #N canvas 746 32 561 300 track-2-processing 0;
 #X obj 200 19 vsl 15 84 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 4743 1;
 #N canvas 694 376 450 300 nc-yaxis 0;
 #X obj 11 92 average 10;
 #X obj 11 113 change;
@@ -11104,7 +11104,7 @@ on which hemipshere the nunchuk joystick is currently in;
 #X obj 76 104 outlet;
 #X text 233 48 1 = left2 = right4 = down8 = up;
 #X obj 126 36 loadbang;
-#X obj 76 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 76 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 76 16 r wii-btn01-set;
 #X obj 76 36 route 4;
@@ -11142,7 +11142,7 @@ on which hemipshere the nunchuk joystick is currently in;
 #X obj 5 114 outlet~;
 #X obj 6 36 inlet~;
 #X obj 51 36 r wii-btn01-set;
-#X obj 51 76 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 51 76 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 101 56 loadbang;
 #X obj 6 91 *~ 1;
@@ -11184,7 +11184,7 @@ component.;
 #X connect 20 0 15 0;
 #X connect 21 0 5 0;
 #X restore 178 40 pd sound;
-#N canvas 47 14 566 247 gui 1;
+#N canvas 47 14 566 247 gui 0;
 #X obj 484 -48 l2ork_monitor;
 #X text 10 -48 Conductor Messaging;
 #X text 10 -8 Volume GUI;
@@ -11233,7 +11233,7 @@ values through recieve tags;
 #X connect 0 0 2 0;
 #X connect 1 0 3 0;
 #X restore 10 132 pd track-acceleration-gui;
-#N canvas 66 107 559 376 event-gui 0;
+#N canvas 722 53 559 376 event-gui 0;
 #X msg -1 -23 color -1.67117e+07 0;
 #X msg 9 -44 color -1.05513e+07 0;
 #X obj -2 21 s gui-record-progress-1;
@@ -11258,6 +11258,12 @@ values through recieve tags;
 #X obj 186 133 tosymbol;
 #X msg 186 152 \; sound-status label \$1;
 #X obj -1 51 r mic-mute;
+#X msg 349 91 color -51201 -1;
+#X msg 336 128 color -1.46718e+07 -1;
+#X obj 339 154 s sound-status;
+#X msg 52 183 color -51201 -1;
+#X msg 61 207 color -1.46718e+07 -1;
+#X obj 60 230 s mic-status;
 #X connect 0 0 2 0;
 #X connect 1 0 2 0;
 #X connect 3 0 4 0;
@@ -11271,20 +11277,27 @@ values through recieve tags;
 #X connect 12 0 15 0;
 #X connect 13 0 18 0;
 #X connect 14 0 17 0;
+#X connect 14 0 28 0;
 #X connect 14 1 16 0;
+#X connect 14 1 27 0;
 #X connect 15 0 20 0;
+#X connect 15 0 25 0;
 #X connect 15 1 19 0;
+#X connect 15 1 24 0;
 #X connect 16 0 13 0;
 #X connect 17 0 13 0;
 #X connect 19 0 21 0;
 #X connect 20 0 21 0;
 #X connect 21 0 22 0;
 #X connect 23 0 14 0;
+#X connect 24 0 26 0;
+#X connect 25 0 26 0;
+#X connect 27 0 29 0;
+#X connect 28 0 29 0;
 #X restore 10 172 pd event-gui;
-#N canvas 47 232 515 153 conductor-events 0;
-#X obj 3 -15 route text stage speed track density;
+#N canvas 79 280 515 174 conductor-events 0;
 #X obj 3 -36 r l2ork-conductor-custom-data;
-#N canvas 786 112 450 300 text-messages 0;
+#N canvas 776 102 450 300 text-messages 0;
 #X symbolatom 43 52 60 0 0 0 - - -, f 60;
 #X msg 43 72 \; l2ork-conductor-text-monitor label \$1;
 #X obj 43 31 tosymbol;
@@ -11292,8 +11305,8 @@ values through recieve tags;
 #X connect 0 0 1 0;
 #X connect 2 0 0 0;
 #X connect 3 0 2 0;
-#X restore 3 91 pd text-messages;
-#N canvas 205 110 450 300 stage-messages 0;
+#X restore 3 111 pd text-messages;
+#N canvas 185 90 450 300 stage-messages 0;
 #X obj -3 -7 inlet;
 #N canvas 441 344 306 317 flash-time 0;
 #X obj 96 521 outlet;
@@ -11384,7 +11397,7 @@ values through recieve tags;
 #X connect 14 0 13 0;
 #X connect 15 0 8 0;
 #X connect 15 1 13 0;
-#X restore 45 70 pd stage-messages;
+#X restore 45 90 pd stage-messages;
 #N canvas 545 331 450 300 speed-messages 0;
 #X obj 3 10 inlet;
 #X obj 89 27 r density-speed-indicator-frame-x0;
@@ -11413,7 +11426,7 @@ values through recieve tags;
 #X connect 12 0 6 0;
 #X connect 13 0 5 0;
 #X connect 13 0 12 0;
-#X restore 88 49 pd speed-messages;
+#X restore 88 69 pd speed-messages;
 #N canvas 122 64 450 371 track-messages 0;
 #X obj 7 7 inlet;
 #X obj 7 33 route 0 1 2;
@@ -11488,7 +11501,7 @@ values through recieve tags;
 #X connect 12 0 10 0;
 #X connect 13 0 1 0;
 #X connect 14 0 13 0;
-#X restore 130 28 pd track-messages;
+#X restore 130 48 pd track-messages;
 #N canvas 53 320 450 300 density-messages 0;
 #X obj 0 1 inlet;
 #X obj -1 210 s density-speed-indicator;
@@ -11519,7 +11532,7 @@ values through recieve tags;
 #X connect 13 0 14 0;
 #X connect 14 0 7 0;
 #X connect 14 0 12 0;
-#X restore 173 8 pd density-messages;
+#X restore 173 28 pd density-messages;
 #N canvas 165 415 802 300 denisty-speed-indicator-init 0;
 #X msg 268 10 get_pos;
 #X obj 268 30 s density-speed-indicator-frame-r;
@@ -11574,12 +11587,19 @@ values through recieve tags;
 #X connect 24 0 17 1;
 #X connect 24 0 19 0;
 #X restore 318 -35 pd denisty-speed-indicator-init;
-#X connect 0 0 2 0;
-#X connect 0 1 3 0;
-#X connect 0 2 4 0;
-#X connect 0 3 5 0;
-#X connect 0 4 6 0;
-#X connect 1 0 0 0;
+#X obj 13 -15 s rumble;
+#X obj 3 5 route text stage speed track density count;
+#X msg 351 40 \; counter label \$1;
+#X obj 334 16 tosymbol;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 8 0 1 0;
+#X connect 8 1 2 0;
+#X connect 8 2 3 0;
+#X connect 8 3 4 0;
+#X connect 8 4 5 0;
+#X connect 8 5 10 0;
+#X connect 10 0 9 0;
 #X restore 10 -28 pd conductor-events;
 #X obj 436 171 l2ork_toggle_resize 1;
 #X restore 94 125 pd gui;
