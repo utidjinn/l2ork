@@ -1,12 +1,12 @@
-#N canvas 47 16 644 581 10;
-#X obj 118 261 hsl 395 125 0 1 0 0 empty gui-position-track-2 empty
--2 -8 0 10 -262144 -1 -1 28715 1;
-#X obj 118 93 hsl 396 125 0 1 0 0 empty gui-position-track-1 empty
--2 -8 0 10 -262144 -1 -1 28787 1;
-#X obj 4 93 vu 107 400 gui-track-1-volume Track\ 1\ Volume -1 -8 0
+#N canvas 47 14 644 581 10;
+#X obj 100 260 hsl 365 125 0 1 0 0 empty gui-position-track-2 empty
+-2 -8 0 10 -262144 -1 -1 31526 1;
+#X obj 100 92 hsl 365 125 0 1 0 0 empty gui-position-track-1 empty
+-2 -8 0 10 -262144 -1 -1 31526 1;
+#X obj 4 93 vu 90 400 gui-track-1-volume Track\ 1\ Volume -1 -8 0 10
+-66577 -1 0 0;
+#X obj 545 93 vu 90 400 gui-track-2-volume Track\ 2\ Volume -1 -8 0
 10 -66577 -1 0 0;
-#X obj 523 93 vu 107 400 gui-track-2-volume Track\ 2\ Volume -1 -8
-0 10 -66577 -1 0 0;
 #N canvas 374 124 450 300 (subpatch) 0;
 #X array loopArray0 192000 float 3 black #006ec9;
 #A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -5769,8 +5769,8 @@
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
-#X coords 0 1 192000 -1 400 125 1;
-#X restore 118 93 graph;
+#X coords 0 1 192000 -1 370 125 1;
+#X restore 100 92 graph;
 #N canvas 424 174 450 300 (subpatch) 0;
 #X array loopArray1 192000 float 3 black #006ec9;
 #A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -11533,25 +11533,27 @@
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
-#X coords 0 1 192000 -1 400 125 1;
-#X restore 118 261 graph;
+#X coords 0 1 192000 -1 370 125 1;
+#X restore 100 260 graph;
 #X obj 203 517 hradio 116 1 0 2 empty gui-current-track Currently\ Selected\ Track
 0 -8 0 10 -262144 -1 -1 0;
 #X obj 440 517 hsl 189 116 -0.5 0.5 0 0 empty gui-track-2-acceleration
-Track\ 2\ Acceleration -2 -8 0 10 -262144 -33289 -1 17913 1;
+Track\ 2\ Acceleration -2 -8 0 10 -262144 -33289 -1 18091 1;
 #X obj 4 517 hsl 189 116 -0.5 0.5 0 0 empty gui-track-1-acceleration
-Track\ 1\ Acceleration -2 -8 0 10 -262144 -128992 -1 9039 1;
+Track\ 1\ Acceleration -2 -8 0 10 -262144 -128992 -1 9364 1;
 #X obj 581 507 cnv 4 4 145 empty empty empty 20 12 0 14 -1 -66577 0
 ;
 #X text 503 637 Normal Speed;
 #X obj 146 507 cnv 4 4 145 empty empty empty 20 12 0 14 -1 -66577 0
 ;
 #X text 68 637 Normal Speed;
-#X obj 118 389 hsl 396 37 0 400 0 0 empty gui-record-progress-2 empty
--2 -8 0 10 -163841 -1 -262144 39500 1;
-#X obj 118 221 hsl 396 37 0 400 0 0 empty gui-record-progress-1 empty
--2 -8 0 10 -163841 -1 -262144 39500 1;
-#X obj 118 430 cnv 15 198 67 empty mic-status Mic\ Muted 24 34 0 26
--228846 -1 0;
-#X obj 321 430 cnv 15 198 67 empty sound-status Sound\ Muted 17 33
-0 23 -228846 -1 0;
+#X obj 100 388 hsl 365 37 0 400 0 0 empty gui-record-progress-2 empty
+-2 -8 0 10 -163841 -1 -262144 0 1;
+#X obj 100 220 hsl 365 37 0 400 0 0 empty gui-record-progress-1 empty
+-2 -8 0 10 -163841 -1 -262144 0 1;
+#X obj 100 430 cnv 15 218 67 empty mic-status Mic\ Active 24 34 0 26
+-3201 -1 0;
+#X obj 322 430 cnv 15 218 67 empty sound-status Sound\ Active 17 33
+0 23 -3201 -1 0;
+#X obj 474 101 vu 64 320 gui-incoming-level Mic 1 -8 0 10 -66577 -1
+0 0;
