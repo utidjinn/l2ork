@@ -116,7 +116,7 @@
 #X obj 199 198 t f f;
 #X obj 226 219 sel 0;
 #X obj 185 648 nbx 5 14 -1 1 0 0 empty empty empty 0 -8 0 10 -262144
--1 -1 0 256 0;
+-1 -1 1 256 0;
 #X obj 129 357 sel 0;
 #X obj 280 285 r calibrate-motionplus;
 #X obj 280 307 t b b;
@@ -405,7 +405,7 @@
 #X connect 10 3 5 0;
 #X connect 11 0 4 0;
 #X restore 138 424 pd \$0-button-stuff;
-#X obj 31 153 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 31 153 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X text 58 197 Enable metro to get accelerometer uppdates;
 #X text 84 208 (xyz wiimote \, xyz nunchuk \, ir);
@@ -413,9 +413,9 @@
 #X msg 73 135 discover;
 #X obj 138 336 disis_wiimote_legacy;
 #X obj 32 183 metro 20;
-#X obj 186 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 186 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 206 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 206 15 tgl 17 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 145 15 bng 17 250 50 0 empty empty 1 6 9 0 10 -4034 -1 -1;
 #X obj 165 15 bng 17 250 50 0 empty empty 1 6 9 0 10 -260097 -1 -1
@@ -10684,7 +10684,7 @@ cpu;
 #X restore 106 166 pd recording;
 #N canvas 735 126 600 293 track-1-processing 0;
 #X obj 206 -255 vsl 18 79 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3885 1;
 #X obj 191 -118 *~;
 #X text 206 -295 Track 1;
 #X obj 206 -168 s track-1-volume;
@@ -10695,7 +10695,7 @@ cpu;
 #X obj 51 -138 tabread4~ loopArray0;
 #X obj 51 -222 expr 48000 / $f1;
 #X obj 8 -341 vsl 15 128 -0.5 0.5 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 9525 1;
 #X obj 8 -96 s playback_direction1;
 #X obj 100 -201 r arraySize;
 #X obj 191 -95 outlet~;
@@ -10727,7 +10727,7 @@ and the speed of the playback on the track.;
 #X restore 426 159 pd track-1-processing;
 #N canvas 706 14 561 300 track-2-processing 0;
 #X obj 200 19 vsl 15 84 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 5212 1;
 #X obj 185 134 *~;
 #X text 200 -21 Track 2;
 #X obj 200 111 s track-2-volume;
@@ -10737,7 +10737,7 @@ and the speed of the playback on the track.;
 #X obj 36 50 phasor~;
 #X obj 36 71 *~;
 #X obj 8 -86 vsl 15 128 -0.5 0.5 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 9525 1;
 #X obj 8 159 s playback_direction2;
 #X obj 36 8 r arraySize;
 #X obj 36 29 expr 48000 / $f1;
@@ -10809,7 +10809,7 @@ and the speed of the playback on the track.;
 #X connect 11 0 12 0;
 #X connect 12 0 13 0;
 #X restore 5 203 pd track-position;
-#N canvas 695 32 524 407 effects 0;
+#N canvas 685 22 524 407 effects 1;
 #X obj 77 -16 inlet~;
 #X obj 76 204 outlet~;
 #X floatatom 122 6 5 0 0 0 - - -, f 5;
@@ -11049,8 +11049,9 @@ on which hemipshere the nunchuk joystick is currently in;
 #X msg 197 100 0;
 #X msg 234 121 1;
 #X msg 262 121 0;
-#X connect 0 0 17 0;
+#X obj 186 55 loadbang;
 #X connect 0 0 18 0;
+#X connect 0 0 17 0;
 #X connect 0 0 16 0;
 #X connect 2 0 4 0;
 #X connect 3 0 14 1;
@@ -11081,6 +11082,7 @@ on which hemipshere the nunchuk joystick is currently in;
 #X connect 23 0 16 1;
 #X connect 24 0 17 1;
 #X connect 25 0 17 1;
+#X connect 26 0 19 0;
 #X restore 225 201 pd effects;
 #N canvas 334 84 402 135 clear-track 0;
 #X obj 9 89 tabwrite~ loopArray0;
@@ -11112,7 +11114,7 @@ on which hemipshere the nunchuk joystick is currently in;
 #N canvas 686 83 450 300 global-mute 0;
 #X obj 76 144 outlet;
 #X text 233 48 1 = left2 = right4 = down8 = up;
-#X obj 76 96 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 76 96 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X obj 76 56 r wii-btn01-set;
 #X obj 76 76 route 4;
