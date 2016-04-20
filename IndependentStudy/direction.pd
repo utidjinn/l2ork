@@ -1,21 +1,17 @@
-#N canvas 699 19 653 459 10;
+#N canvas 689 14 653 459 10;
 #X obj -183 276 cnv 15 187 153 empty empty empty 20 12 0 14 -260097
 -66577 0;
 #X obj -183 -25 cnv 15 187 166 empty empty empty 20 12 0 14 -260097
 -66577 0;
-#X obj -180 281 cnv 68 180 68 empty track-1-indicator Track\ 1 40 36
-0 25 -3136 -1 0;
-#X obj -180 358 cnv 68 180 68 empty track-2-indicator Track\ 2 40 36
-0 25 -228846 -1 0;
 #X obj -180 -22 cnv 15 180 27 empty stage-1 White\ Noise 20 12 0 14
 -3201 -1 0;
-#X obj -180 11 cnv 15 180 27 empty stage-2 Lists 20 12 0 14 -228846
+#X obj -180 11 cnv 15 180 27 empty stage-2 Lists 20 12 0 14 -3201 -1
+0;
+#X obj -180 44 cnv 15 180 27 empty stage-3 Sing 20 12 0 14 -3201 -1
+0;
+#X obj -180 77 cnv 15 180 27 empty stage-4 "lalala" 20 12 0 14 -3201
 -1 0;
-#X obj -180 44 cnv 15 180 27 empty stage-3 Sing 20 12 0 14 -228846
--1 0;
-#X obj -180 77 cnv 15 180 27 empty stage-4 "lalala" 20 12 0 14 -228846
--1 0;
-#X obj -180 110 cnv 15 180 27 empty stage-5 L2ork\ Out 20 12 0 14 -228846
+#X obj -180 110 cnv 15 180 27 empty stage-5 L2ork\ Out 20 12 0 14 -3201
 -1 0;
 #X obj 10 -23 cnv 175 450 450 density-speed-indicator-frame-s density-speed-indicator-frame-r
 empty 20 12 0 14 -233017 -66577 0;
@@ -30,7 +26,7 @@ empty 20 12 0 14 -233017 -66577 0;
 #X obj 10 182 cnv 15 60 35 empty empty low 2 17 0 30 -1 -262144 0;
 #X obj 387 182 cnv 15 73 35 empty empty high 1 17 0 30 -1 -262144 0
 ;
-#X obj 10 -23 cnv 27 90 90 empty density-speed-indicator empty 20 12
-0 14 -260097 -66577 0;
-#X obj -183 145 cnv 15 187 127 empty counter 102 30 65 0 75 -1 -262144
+#X obj 370 -23 cnv 27 90 90 empty density-speed-indicator empty 20
+12 0 14 -260097 -66577 0;
+#X obj -183 145 cnv 15 187 127 empty counter 60 30 65 0 75 -1 -262144
 0;

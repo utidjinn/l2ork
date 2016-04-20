@@ -1,5 +1,5 @@
-#N canvas 91 209 593 300 10;
-#N canvas 61 153 591 132 messaging 0;
+#N canvas 78 321 593 300 10;
+#N canvas 47 113 591 132 messaging 1;
 #X obj 310 86 s l2ork-conductor-broadcast-custom;
 #X obj 317 53 list prepend track;
 #X obj 201 53 list prepend stage;
@@ -48,7 +48,6 @@
 #X msg 32 104 setbang \$1;
 #X floatatom 32 86 5 0 0 0 - - -, f 5;
 #X obj -37 29 route 47;
-#X obj 71 85 s l2ork-conductor-notify;
 #N canvas 394 144 450 300 part-1 0;
 #X obj 103 89 inlet;
 #X obj 104 242 outlet;
@@ -180,18 +179,16 @@ of inlet)- text- stage- track- variance- density;
 #X restore 488 129 pd part-5;
 #X obj 226 63 route 1 2 3 4 0;
 #X obj 226 44 change;
-#X obj 277 202 s l2ork-conductor-notify;
 #X connect 1 0 13 0;
 #X connect 2 0 4 0;
 #X connect 2 0 6 0;
 #X connect 3 0 5 0;
-#X connect 3 0 17 0;
+#X connect 3 0 16 0;
 #X connect 4 0 12 0;
-#X connect 4 1 14 0;
 #X connect 5 0 7 0;
 #X connect 6 0 3 0;
 #X connect 8 0 9 0;
-#X connect 9 0 24 0;
+#X connect 9 0 23 0;
 #X connect 10 0 0 0;
 #X connect 10 1 0 1;
 #X connect 10 2 0 2;
@@ -200,20 +197,15 @@ of inlet)- text- stage- track- variance- density;
 #X connect 11 0 3 0;
 #X connect 12 0 11 0;
 #X connect 13 0 2 0;
+#X connect 14 0 10 0;
 #X connect 15 0 10 0;
-#X connect 15 0 25 0;
-#X connect 16 0 10 0;
-#X connect 16 0 25 0;
-#X connect 17 0 18 0;
+#X connect 16 0 17 0;
+#X connect 18 0 10 0;
 #X connect 19 0 10 0;
-#X connect 19 0 25 0;
-#X connect 20 0 10 0;
-#X connect 20 0 25 0;
-#X connect 22 0 10 0;
-#X connect 22 0 25 0;
-#X connect 23 0 15 0;
-#X connect 23 1 16 0;
-#X connect 23 2 19 0;
-#X connect 23 3 20 0;
-#X connect 23 4 22 0;
-#X connect 24 0 23 0;
+#X connect 21 0 10 0;
+#X connect 22 0 14 0;
+#X connect 22 1 15 0;
+#X connect 22 2 18 0;
+#X connect 22 3 19 0;
+#X connect 22 4 21 0;
+#X connect 23 0 22 0;
